@@ -10,8 +10,11 @@ import SwiftUI
 @main
 struct OrderFoodApp: App {
     var body: some Scene {
+        
         WindowGroup {
-            ContentView()
+            let categories = Category.defaultCategories
+            
+            HomeView(categories: categories)
         }
     }
 }
