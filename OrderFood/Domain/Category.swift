@@ -11,13 +11,14 @@ struct Category {
     var id = UUID()
     var name: String
     var image: String
+    var type: FoodType
     
     static var defaultCategories: [Category] {
         return [
-            Category(name: "Burger", image: "burgers"),
-            Category(name: "Pizza", image: "pizzas"),
-            Category(name: "Deserts", image: "deserts"),
-            Category(name: "Drinks", image: "drinks")
+            Category(name: "Burger", image: "burgers", type: .burger),
+            Category(name: "Pizza", image: "pizzas", type: .pizza),
+            Category(name: "Deserts", image: "deserts", type: .deserts),
+            Category(name: "Drinks", image: "drinks", type: .drinks)
         ]
     }
 }

@@ -9,18 +9,18 @@ import SwiftUI
 
 struct CategoryCellView: View {
     
-    let category: Category
-    let isSelected: Bool
+    @Binding var selectedCategory: Category?
+    var category: Category
     
     var body: some View {
         
         Button {
             print("selected category \(category)")
-            OrderFood.shared.selectedCategory = category
+            selectedCategory = category
             
         } label: {
             ZStack {
-                if isSelected {
+                if (selectedCategory?.name == category.name) ?? false {
                     Color(uiColor: UIColor(red: 0.97, green: 0.72, blue: 0.38, alpha: 1.00))
                 } else {
                     Color(.white)
@@ -38,7 +38,7 @@ struct CategoryCellView: View {
                     Text(category.name)
                         .font(.system(size: 14))
                         .bold()
-                        .foregroundColor(isSelected ? .white : .black)
+                        .foregroundColor(.black)
                 }
                 .frame(width:85, height: 140)
             }
@@ -50,10 +50,10 @@ struct CategoryCellView: View {
     }
 }
 
-struct CategoryCellView_Previews: PreviewProvider {
-    static var previews: some View {
-        let randomCategory = Category.defaultCategories.randomElement()!
-        CategoryCellView(category: randomCategory, isSelected: true)
-            .previewLayout(.fixed(width: 85, height: 140))
-    }
-}
+//struct CategoryCellView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        let randomCategory = Category.defaultCategories.randomElement()!
+//        CategoryCellView(selectedCategory: <#Binding<Category>#>, category: randomCategory, isSelected: true)
+//            .previewLayout(.fixed(width: 85, height: 140))
+//    }
+//}

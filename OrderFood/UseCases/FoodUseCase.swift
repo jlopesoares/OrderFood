@@ -9,7 +9,9 @@ import Foundation
 
 enum FoodType {
     case burger,
-    pizza
+    pizza,
+    deserts,
+    drinks
 }
 
 protocol FoodUseCase: Identifiable {

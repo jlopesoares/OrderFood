@@ -9,9 +9,11 @@ import SwiftUI
 
 struct HomePopularView: View {
     
+    @Binding var selectedCategory: Category?
     let items: [Food]
     
     var body: some View {
+        
         
         HStack {
             Text("Most Popular")
@@ -25,22 +27,35 @@ struct HomePopularView: View {
         .padding(24.0)
       
         LazyVStack {
-            ForEach(items, id: \.id) { food in
+            ForEach(foodByType(type: selectedCategory?.type ?? .burger), id: \.id) { food in
                 PopularItemCellView(isFavourite: Bool.random(), food: food)
             }
         }
+    }
+    
+    func foodByType(type: FoodType) -> [Food] {
+        items.filter { $0.type == type}
     }
 }
 
 struct HomePopularView_Previews: PreviewProvider {
     static var previews: some View {
-        
+
         let foods: [Food] = [Food(name: "Big Mac",
-                                         type: .burger,
-                                         image: "",
-                                         price: Price(currentPrice: 20))]
-        
-        HomePopularView(items: foods)
+                                  type: .burger,
+                                  image: "",
+                                  price: Price(currentPrice: 20)),
+                             Food(name: "Big Tasty",
+                                  type: .burger,
+                                  image: "",
+                                  price: Price(currentPrice: 20)),
+                             Food(name: "4 Seasons",
+                                  type: .pizza,
+                                  image: "",
+                                  price: Price(currentPrice: 20))]
+
+        HomePopularView(selectedCategory: .constant(Category(name: "dummy", image: "pizza", type: .burger)),
+                        items: foods)
             .previewLayout(.fixed(width: 375, height: 50))
     }
 }

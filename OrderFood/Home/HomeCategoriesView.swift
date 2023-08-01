@@ -10,7 +10,7 @@ import SwiftUI
 struct HomeCategoriesView: View {
     
     var categories: [Category]
-    @State var selectedCategory: Category?
+    @Binding var selectedCategory: Category?
     
     var body: some View {
         
@@ -27,17 +27,20 @@ struct HomeCategoriesView: View {
         ScrollView(.horizontal, showsIndicators: false) {
             LazyHStack {
                 ForEach(categories, id: \.id) { category in
-                    CategoryCellView(category: category,
-                                     isSelected: selectedCategory?.name == category.name)
+                    CategoryCellView(selectedCategory: $selectedCategory,
+                                     category: category)
                 }
             }
         }
         .ignoresSafeArea()
+        .onAppear {
+            selectedCategory = categories.first!
+        }
     }
 }
 
-struct HomeCategoriesView_Previews: PreviewProvider {
-    static var previews: some View {
-        HomeCategoriesView(categories: Category.defaultCategories)
-    }
-}
+//struct HomeCategoriesView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        HomeCategoriesView(categories: Category.defaultCategories)
+//    }
+//}

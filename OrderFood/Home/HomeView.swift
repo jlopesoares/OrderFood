@@ -9,7 +9,20 @@ import SwiftUI
 
 struct HomeView: View {
     
+    @State var selectedCategory: Category?
     let categories: [Category]
+    let foods: [Food] = [Food(name: "Big Mac",
+                              type: .burger,
+                              image: "",
+                              price: Price(currentPrice: 20)),
+                         Food(name: "Big Tasty",
+                              type: .burger,
+                              image: "",
+                              price: Price(currentPrice: 20)),
+                         Food(name: "4 Seasons",
+                              type: .pizza,
+                              image: "pizza",
+                              price: Price(currentPrice: 20))]
     
     var body: some View {
         ZStack {
@@ -19,8 +32,10 @@ struct HomeView: View {
                 LazyVStack(alignment: .leading) {
                     HomeHeaderView()
                     HomeSearchView()
-                    HomeCategoriesView(categories: categories)
-                    HomePopularView(items: [])
+                    HomeCategoriesView(categories: categories,
+                                       selectedCategory: $selectedCategory)
+                    HomePopularView(selectedCategory: $selectedCategory,
+                                    items: foods)
                 }
                 .padding(.vertical, 100)
             }
@@ -31,6 +46,6 @@ struct HomeView: View {
 
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
-        HomeView(categories: [Category(name: "dummy", image: "drinks")])
+        HomeView(categories: [Category(name: "dummy", image: "drinks", type: .drinks)])
     }
 }
