@@ -12,9 +12,9 @@ struct OrderFoodApp: App {
     var body: some Scene {
         
         WindowGroup {
-            let categories = Category.defaultCategories
+            let categories = Category.dummyCategories
             
-            HomeView(categories: categories)
+            HomeView(categories: categories, foods: [])
         }
     }
 }

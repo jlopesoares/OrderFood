@@ -39,8 +39,9 @@ struct HomeCategoriesView: View {
     }
 }
 
-//struct HomeCategoriesView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        HomeCategoriesView(categories: Category.defaultCategories)
-//    }
-//}
+struct HomeCategoriesView_Previews: PreviewProvider {
+    static var previews: some View {
+        HomeCategoriesView(categories: Category.dummyCategories, selectedCategory: .constant(Category.dummyCategories.first!))
+            .previewLayout(.fixed(width: 375, height: 150))
+    }
+}

@@ -30,7 +30,7 @@ struct CategoryCellView: View {
                     Image(category.image)
                         .resizable()
                         .frame(width: 35, height: 35)
-                        .padding(.horizontal, 14)
+                        .padding(.horizontal, 8)
                         .padding(.vertical, 18.0)
                         .background(.white)
                         .cornerRadius(35)
@@ -50,10 +50,10 @@ struct CategoryCellView: View {
     }
 }
 
-//struct CategoryCellView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        let randomCategory = Category.defaultCategories.randomElement()!
-//        CategoryCellView(selectedCategory: <#Binding<Category>#>, category: randomCategory, isSelected: true)
-//            .previewLayout(.fixed(width: 85, height: 140))
-//    }
-//}
+struct CategoryCellView_Previews: PreviewProvider {
+    static var previews: some View {
+        let randomCategory = Category.dummyCategories.randomElement()!
+        CategoryCellView(selectedCategory: .constant(Category.dummyCategories.first!), category: randomCategory)
+            .previewLayout(.fixed(width: 85, height: 140))
+    }
+}

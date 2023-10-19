@@ -14,22 +14,27 @@ struct HomePopularView: View {
     
     var body: some View {
         
-        
         HStack {
             Text("Most Popular")
                 .font(.system(size: 18, weight: .medium))
             Spacer()
             Text("...")
                 .font(.system(size: 18, weight: .medium))
-            
         }
         .frame(maxWidth: .infinity)
         .padding(24.0)
-      
-        LazyVStack {
-            ForEach(foodByType(type: selectedCategory?.type ?? .burger), id: \.id) { food in
-                PopularItemCellView(isFavourite: Bool.random(), food: food)
+
+        NavigationStack {
+            LazyVStack {
+                ForEach(foodByType(type: selectedCategory?.type ?? .burger), id: \.id) { food in
+                    NavigationLink(value: food, label: {
+                        PopularItemCellView(isFavourite: Bool.random(), food: food)
+                    })
+                }
             }
+        }
+        .navigationDestination(for: Food.self) { food in
+            FoodDetailView()
         }
     }
     

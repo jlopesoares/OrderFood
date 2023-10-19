@@ -13,7 +13,7 @@ struct Category {
     var image: String
     var type: FoodType
     
-    static var defaultCategories: [Category] {
+    static var dummyCategories: [Category] {
         return [
             Category(name: "Burger", image: "burgers", type: .burger),
             Category(name: "Pizza", image: "pizzas", type: .pizza),
