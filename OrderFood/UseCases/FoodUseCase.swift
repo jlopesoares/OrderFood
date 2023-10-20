@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum FoodType {
+enum FoodType: Codable {
     case burger,
     pizza,
     deserts,

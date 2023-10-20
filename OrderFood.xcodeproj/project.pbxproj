@@ -27,6 +27,8 @@
 		96432B552A74743B002E88F1 /* OrderFoodUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96432B542A74743B002E88F1 /* OrderFoodUITestsLaunchTests.swift */; };
 		96558DCD2A7C5016006FEE36 /* FoodDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96558DCC2A7C5016006FEE36 /* FoodDetailView.swift */; };
 		96B90D662AE1E45E00FB3504 /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96B90D652AE1E45E00FB3504 /* UIColor+Extensions.swift */; };
+		96B90D692AE2FD1F00FB3504 /* FoodAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96B90D682AE2FD1F00FB3504 /* FoodAPI.swift */; };
+		96B90D6D2AE3011E00FB3504 /* Error+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96B90D6C2AE3011E00FB3504 /* Error+Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,6 +72,8 @@
 		96432B542A74743B002E88F1 /* OrderFoodUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderFoodUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		96558DCC2A7C5016006FEE36 /* FoodDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodDetailView.swift; sourceTree = "<group>"; };
 		96B90D652AE1E45E00FB3504 /* UIColor+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extensions.swift"; sourceTree = "<group>"; };
+		96B90D682AE2FD1F00FB3504 /* FoodAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodAPI.swift; sourceTree = "<group>"; };
+		96B90D6C2AE3011E00FB3504 /* Error+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Error+Extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -161,6 +165,7 @@
 		96432B362A74743A002E88F1 /* OrderFood */ = {
 			isa = PBXGroup;
 			children = (
+				96B90D672AE2FD1200FB3504 /* Network */,
 				96B90D642AE1E44E00FB3504 /* Extensions */,
 				962B54C92A78632500A4F448 /* UseCases */,
 				962B54C22A78615D00A4F448 /* Domain */,
@@ -210,8 +215,17 @@
 			isa = PBXGroup;
 			children = (
 				96B90D652AE1E45E00FB3504 /* UIColor+Extensions.swift */,
+				96B90D6C2AE3011E00FB3504 /* Error+Extensions.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		96B90D672AE2FD1200FB3504 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				96B90D682AE2FD1F00FB3504 /* FoodAPI.swift */,
+			);
+			path = Network;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -354,6 +368,8 @@
 				962B54C12A785F4200A4F448 /* CategoryCellView.swift in Sources */,
 				962B54C62A7861C100A4F448 /* PriceUseCase.swift in Sources */,
 				962B54B62A785E4C00A4F448 /* HomeHeaderView.swift in Sources */,
+				96B90D6D2AE3011E00FB3504 /* Error+Extensions.swift in Sources */,
+				96B90D692AE2FD1F00FB3504 /* FoodAPI.swift in Sources */,
 				962B54D12A78651F00A4F448 /* Category.swift in Sources */,
 				962B54B42A785E2200A4F448 /* HomeView.swift in Sources */,
 				96558DCD2A7C5016006FEE36 /* FoodDetailView.swift in Sources */,

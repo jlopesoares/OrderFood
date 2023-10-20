@@ -12,6 +12,7 @@ struct HomeView: View {
     @State var selectedCategory: Category?
     let categories: [Category]
     let foods: [Food]
+    let foodAPI = FoodAPI()
     
     var body: some View {
         NavigationStack {
@@ -31,6 +32,13 @@ struct HomeView: View {
                 }
             }
             .ignoresSafeArea()
+        }
+        .onAppear {
+            Task {
+                let result = try await foodAPI.getCategories()
+                print(result)
+                
+            }
         }
     }
 }

@@ -7,12 +7,14 @@
 
 import Foundation
 
-struct Category {
+struct Category: Codable, Identifiable {
     var id = UUID()
     var name: String
     var image: String
     var type: FoodType
-    
+}
+
+extension Category {
     static var dummyCategories: [Category] {
         return [
             Category(name: "Burger", image: "burgers", type: .burger),
@@ -23,3 +25,8 @@ struct Category {
     }
 }
 
+struct NewCategory: Codable, Identifiable {
+    var id: String
+    var name: String
+    var image: String
+}
