@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol PriceUseCase {
+protocol PriceUseCase: Codable {
     var currentPrice: Double { get set }
     var oldPrice: Double? { get set }
     var discount: Double? { get set }

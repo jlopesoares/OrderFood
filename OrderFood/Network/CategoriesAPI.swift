@@ -14,14 +14,12 @@ protocol CategoriesAPIUseCase {
 final class CategoriesAPI: CategoriesAPIUseCase {
     
     func fetchCategories() async throws -> [Category]? {
-
-        var categoriesURLComponents = URLComponents()
-        categoriesURLComponents.scheme = "https"
-        categoriesURLComponents.host = "api.npoint.io"
-        categoriesURLComponents.path = "/1dcd902bc67069ab70b8"
+        
+        let path = "/1dcd902bc67069ab70b8"
+        let url = NetworkAPI.urlBuilder(for: path)
 
         do {
-            let categories: [Category]? = try await NetworkAPI.fetchData(from: categoriesURLComponents)
+            let categories: [Category]? = try await NetworkAPI.fetchData(from: url)
             return categories
         } catch {
             throw error

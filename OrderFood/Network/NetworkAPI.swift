@@ -8,9 +8,19 @@
 import Foundation
 
 final class NetworkAPI {
-    static func fetchData<T>(from components: URLComponents) async throws -> T? where T: Codable {
+    
+    static func urlBuilder(for path: String) -> URL? {
+        var urlComponents = URLComponents()
+        urlComponents.scheme = "https"
+        urlComponents.host = "api.npoint.io"
+        urlComponents.path = path
+        
+        return urlComponents.url
+    }
+    
+    static func fetchData<T>(from url: URL?) async throws -> T? where T: Codable {
         guard
-            let url = components.url
+            let url
         else {
             throw APIError.genericError
         }

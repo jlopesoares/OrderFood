@@ -46,18 +46,7 @@ struct HomePopularView: View {
 struct HomePopularView_Previews: PreviewProvider {
     static var previews: some View {
 
-        let foods: [Food] = [Food(name: "Big Mac",
-                                  type: .burger,
-                                  image: "",
-                                  price: Price(currentPrice: 20)),
-                             Food(name: "Big Tasty",
-                                  type: .burger,
-                                  image: "",
-                                  price: Price(currentPrice: 20)),
-                             Food(name: "4 Seasons",
-                                  type: .pizza,
-                                  image: "",
-                                  price: Price(currentPrice: 20))]
+        let foods: [Food] = Food.MockFoods
 
         HomePopularView(selectedCategory: .constant(Category(id: 1, name: "dummy", image: "pizza", type: .burger)),
                         items: foods)

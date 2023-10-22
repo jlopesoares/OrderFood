@@ -61,6 +61,7 @@ struct PopularItemCellView: View {
 
 struct PopularItemCellView_Previews: PreviewProvider {
     static var previews: some View {
-        PopularItemCellView(isFavourite: true, food: Food(name: "5 Pepper", type: .pizza, image: "pizza", price: Price(currentPrice: 17.50)))
+        PopularItemCellView(isFavourite: true,
+                            food: Food.MockFoods.first!)
     }
 }

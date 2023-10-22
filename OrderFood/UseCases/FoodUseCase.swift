@@ -16,9 +16,9 @@ enum FoodType: Int, Codable {
 
 protocol FoodUseCase: Identifiable {
     
-    var id: UUID { get }
+    var id: Int { get }
     var name: String { get set }
     var type: FoodType { get set }
     var image: String { get set }
-    var price: PriceUseCase { get set }
+    var price: Price { get set }
 }

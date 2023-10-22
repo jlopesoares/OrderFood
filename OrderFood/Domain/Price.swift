@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Price: PriceUseCase {
+struct Price: PriceUseCase, Codable {
     var currentPrice: Double
     var oldPrice: Double?
     var discount: Double?

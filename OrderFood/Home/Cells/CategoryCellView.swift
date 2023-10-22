@@ -20,11 +20,7 @@ struct CategoryCellView: View {
             
         } label: {
             ZStack {
-                if (selectedCategory?.name == category.name) ?? false {
-                    Color(uiColor: UIColor(red: 0.97, green: 0.72, blue: 0.38, alpha: 1.00))
-                } else {
-                    Color(.white)
-                }
+                selectedCategory?.id == category.id ? Color.mainColor : Color.white
                 
                 VStack(spacing: 12) {
                     Image(category.image)
@@ -38,7 +34,7 @@ struct CategoryCellView: View {
                     Text(category.name)
                         .font(.system(size: 14))
                         .bold()
-                        .foregroundColor(.black)
+                        .foregroundColor(.primary)
                 }
                 .frame(width:85, height: 140)
             }

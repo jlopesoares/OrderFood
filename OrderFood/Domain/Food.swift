@@ -7,12 +7,12 @@
 
 import Foundation
 
-struct Food: FoodUseCase, Hashable {
-    var id = UUID()
+struct Food: FoodUseCase, Hashable, Codable {
+    var id: Int
     var name: String
     var type: FoodType
     var image: String
-    var price: PriceUseCase
+    var price: Price
     
     func hash(into hasher: inout Hasher) {
         hasher.combine(id)
@@ -25,17 +25,22 @@ struct Food: FoodUseCase, Hashable {
 
 extension Food {
     static var MockFoods: [Food] {
-        return [Food(name: "Big Mac",
+        return [Food(id: 1,
+                     name: "Big Mac",
                      type: .burger,
                      image: "pizza",
                      price: Price(currentPrice: 20)),
-                Food(name: "Big Tasty",
-                     type: .burger,
-                     image: "pizza",
-                     price: Price(currentPrice: 20)),
-                Food(name: "4 Seasons",
-                     type: .pizza,
-                     image: "pizza",
-                     price: Price(currentPrice: 20))]
+                Food(
+                    id: 2,
+                    name: "Big Tasty",
+                    type: .burger,
+                    image: "pizza",
+                    price: Price(currentPrice: 20)),
+                Food(
+                    id: 3,
+                    name: "4 Seasons",
+                    type: .pizza,
+                    image: "pizza",
+                    price: Price(currentPrice: 20))]
     }
 }
