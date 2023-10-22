@@ -59,7 +59,7 @@ struct HomePopularView_Previews: PreviewProvider {
                                   image: "",
                                   price: Price(currentPrice: 20))]
 
-        HomePopularView(selectedCategory: .constant(Category(name: "dummy", image: "pizza", type: .burger)),
+        HomePopularView(selectedCategory: .constant(Category(id: 1, name: "dummy", image: "pizza", type: .burger)),
                         items: foods)
             .previewLayout(.fixed(width: 375, height: 50))
     }

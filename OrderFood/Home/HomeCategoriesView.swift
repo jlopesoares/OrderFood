@@ -33,15 +33,12 @@ struct HomeCategoriesView: View {
             }
         }
         .ignoresSafeArea()
-        .onAppear {
-            selectedCategory = categories.first!
-        }
     }
 }
 
 struct HomeCategoriesView_Previews: PreviewProvider {
     static var previews: some View {
-        HomeCategoriesView(categories: Category.dummyCategories, selectedCategory: .constant(Category.dummyCategories.first!))
+        HomeCategoriesView(categories: Category.mockedCategories, selectedCategory: .constant(Category.mockedCategories.first!))
             .previewLayout(.fixed(width: 375, height: 150))
     }
 }

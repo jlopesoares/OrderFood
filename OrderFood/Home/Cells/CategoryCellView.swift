@@ -46,14 +46,13 @@ struct CategoryCellView: View {
             .padding(.horizontal, 12.0)
         }
         .cornerRadius(40)
-        .padding(.horizontal, 12.0)
     }
 }
 
 struct CategoryCellView_Previews: PreviewProvider {
     static var previews: some View {
-        let randomCategory = Category.dummyCategories.randomElement()!
-        CategoryCellView(selectedCategory: .constant(Category.dummyCategories.first!), category: randomCategory)
+        let randomCategory = Category.mockedCategories.randomElement()!
+        CategoryCellView(selectedCategory: .constant(Category.mockedCategories.first!), category: randomCategory)
             .previewLayout(.fixed(width: 85, height: 140))
     }
 }

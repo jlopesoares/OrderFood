@@ -8,25 +8,24 @@
 import Foundation
 
 struct Category: Codable, Identifiable {
-    var id = UUID()
+    var id: Int
     var name: String
     var image: String
     var type: FoodType
 }
 
 extension Category {
-    static var dummyCategories: [Category] {
+    
+    static var fixture: Category {
+        Category(id: 999, name: "Burger", image: "burgers", type: .burger)
+    }
+    
+    static var mockedCategories: [Category] {
         return [
-            Category(name: "Burger", image: "burgers", type: .burger),
-            Category(name: "Pizza", image: "pizzas", type: .pizza),
-            Category(name: "Deserts", image: "deserts", type: .deserts),
-            Category(name: "Drinks", image: "drinks", type: .drinks)
+            Category(id: 1, name: "Burger", image: "burgers", type: .burger),
+            Category(id: 2, name: "Pizza", image: "pizzas", type: .pizza),
+            Category(id: 3, name: "Deserts", image: "deserts", type: .deserts),
+            Category(id: 4, name: "Drinks", image: "drinks", type: .drinks)
         ]
     }
-}
-
-struct NewCategory: Codable, Identifiable {
-    var id: String
-    var name: String
-    var image: String
 }

@@ -9,46 +9,38 @@ import SwiftUI
 
 struct HomeView: View {
     
-    @State var selectedCategory: Category?
-    let categories: [Category]
-    let foods: [Food]
-    let foodAPI = FoodAPI()
+    @StateObject var viewModel = HomeViewModel(api: CategoriesAPI())
     
     var body: some View {
         NavigationStack {
             ZStack {
-                Color(uiColor: UIColor(red: 0.96, green: 0.96, blue: 0.96, alpha: 1.00))
+                Color.mainBackgroundColor
                 
                 ScrollView {
                     LazyVStack(alignment: .leading) {
                         HomeHeaderView()
                         HomeSearchView()
-                        HomeCategoriesView(categories: categories,
-                                           selectedCategory: $selectedCategory)
-                        HomePopularView(selectedCategory: $selectedCategory,
-                                        items: foods)
+                        HomeCategoriesView(categories: viewModel.categories,
+                                           selectedCategory: $viewModel.selectedCategory)
+                        HomePopularView(selectedCategory: $viewModel.selectedCategory,
+                                        items: viewModel.foods)
                     }
                     .padding(.vertical, 100)
                 }
             }
             .ignoresSafeArea()
         }
-        .onAppear {
-            Task {
-                let result = try await foodAPI.getCategories()
-                print(result)
-                
-            }
+        .task {
+            await viewModel.fetchCategories()
         }
     }
 }
 
 struct HomeView_Previews: PreviewProvider {
-    
-    
-    
     static var previews: some View {
-        HomeView(categories: Category.dummyCategories,
-                 foods: Food.MockFoods)
+        let mockedViewModel = HomeViewModel(api: MockCategoriesAPI(),
+                                            categories: Category.mockedCategories)
+        
+        HomeView(viewModel: mockedViewModel)
     }
 }
