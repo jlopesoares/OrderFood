@@ -24,7 +24,21 @@ struct Food: FoodUseCase, Hashable, Codable {
 }
 
 extension Food {
-    static var MockFoods: [Food] {
+    
+    static var MockPopularFoods: [Food] {
+        return [Food(id: 1,
+                     name: "Tacos",
+                     type: .burger,
+                     image: "pizza",
+                     price: Price(currentPrice: 20)),
+                Food(id: 2,
+                    name: "Big Tasty",
+                    type: .burger,
+                    image: "pizza",
+                    price: Price(currentPrice: 20))]
+    }
+    
+    static var MockFoods: [Food] {
         return [Food(id: 1,
                      name: "Big Mac",
                      type: .burger,

@@ -9,18 +9,15 @@ import SwiftUI
 
 struct CategoryCellView: View {
     
-    @Binding var selectedCategory: Category?
     var category: Category
     
     var body: some View {
         
         Button {
             print("selected category \(category)")
-            selectedCategory = category
-            
         } label: {
             ZStack {
-                selectedCategory?.id == category.id ? Color.mainColor : Color.white
+                Color.white
                 
                 VStack(spacing: 12) {
                     Image(category.image)
@@ -48,7 +45,7 @@ struct CategoryCellView: View {
 struct CategoryCellView_Previews: PreviewProvider {
     static var previews: some View {
         let randomCategory = Category.mockedCategories.randomElement()!
-        CategoryCellView(selectedCategory: .constant(Category.mockedCategories.first!), category: randomCategory)
+        CategoryCellView(category: randomCategory)
             .previewLayout(.fixed(width: 85, height: 140))
     }
 }

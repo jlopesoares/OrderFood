@@ -9,27 +9,21 @@ import SwiftUI
 
 struct HomePopularView: View {
     
-    @Binding var selectedCategory: Category?
     let items: [Food]
     
     var body: some View {
         
-        HStack {
-            Text("Most Popular")
-                .font(.system(size: 18, weight: .medium))
-            Spacer()
-            Text("...")
-                .font(.system(size: 18, weight: .medium))
-        }
-        .frame(maxWidth: .infinity)
-        .padding(24.0)
-
-        NavigationStack {
-            LazyVStack {
-                ForEach(foodByType(type: selectedCategory?.type ?? .burger), id: \.id) { food in
-                    NavigationLink(value: food, label: {
-                        PopularItemCellView(isFavourite: Bool.random(), food: food)
-                    })
+        VStack{
+            HeaderView(title: "Most Popular")
+                .padding()
+            
+            NavigationStack {
+                LazyVStack {
+                    ForEach(items) { food in
+                        NavigationLink(value: food, label: {
+                            PopularItemCellView(isFavourite: Bool.random(), food: food)
+                        })
+                    }
                 }
             }
         }
@@ -37,19 +31,14 @@ struct HomePopularView: View {
             FoodDetailView()
         }
     }
-    
-    func foodByType(type: FoodType) -> [Food] {
-        items.filter { $0.type == type}
-    }
 }
 
 struct HomePopularView_Previews: PreviewProvider {
     static var previews: some View {
 
-        let foods: [Food] = Food.MockFoods
+        let foods: [Food] = Food.MockPopularFoods
 
-        HomePopularView(selectedCategory: .constant(Category(id: 1, name: "dummy", image: "pizza", type: .burger)),
-                        items: foods)
-            .previewLayout(.fixed(width: 375, height: 50))
+        HomePopularView(items: foods)
+            .previewLayout(.fixed(width: 375, height: 400))
     }
 }

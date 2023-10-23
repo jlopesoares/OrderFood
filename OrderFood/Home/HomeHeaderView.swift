@@ -24,8 +24,6 @@ struct HomeHeaderView: View {
     }
 }
 
-//https://api.npoint.io/318a2ccc371f5902a107
-
 struct HomeHeaderView_Previews: PreviewProvider {
     static var previews: some View {
         HomeHeaderView()

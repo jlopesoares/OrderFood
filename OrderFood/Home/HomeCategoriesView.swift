@@ -10,25 +10,18 @@ import SwiftUI
 struct HomeCategoriesView: View {
     
     var categories: [Category]
-    @Binding var selectedCategory: Category?
     
     var body: some View {
         
-        HStack {
-            Text("Explore Categories")
-                .font(.system(size: 18, weight: .medium))
-            Spacer()
-            Text("...")
-                .font(.system(size: 18, weight: .medium))
-        }
-        .frame(maxWidth: .infinity)
-        .padding(.horizontal, 24.0)
-        
-        ScrollView(.horizontal, showsIndicators: false) {
-            LazyHStack {
-                ForEach(categories, id: \.id) { category in
-                    CategoryCellView(selectedCategory: $selectedCategory,
-                                     category: category)
+        VStack {
+            HeaderView(title: "Explore Categories")
+                .padding()
+            
+            ScrollView(.horizontal, showsIndicators: false) {
+                LazyHStack {
+                    ForEach(categories) { category in
+                        CategoryCellView(category: category)
+                    }
                 }
             }
         }
@@ -38,7 +31,7 @@ struct HomeCategoriesView: View {
 
 struct HomeCategoriesView_Previews: PreviewProvider {
     static var previews: some View {
-        HomeCategoriesView(categories: Category.mockedCategories, selectedCategory: .constant(Category.mockedCategories.first!))
-            .previewLayout(.fixed(width: 375, height: 150))
+        HomeCategoriesView(categories: Category.mockedCategories)
+            .previewLayout(.fixed(width: 375, height: 170))
     }
 }

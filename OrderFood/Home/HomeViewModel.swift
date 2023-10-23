@@ -11,13 +11,11 @@ import Foundation
     
     let api: CategoriesAPIUseCase
     
-    @Published var selectedCategory: Category?
     @Published var categories: [Category] = []
     @Published var foods: [Food] = []
     
-    init(api: CategoriesAPIUseCase, categories: [Category] = [], selectedCategory: Category? = nil, foods: [Food] = []) {
+    init(api: CategoriesAPIUseCase, categories: [Category] = [], foods: [Food] = []) {
         self.api = api
-        self.selectedCategory = selectedCategory
         self.foods = foods
     }
     
@@ -26,6 +24,8 @@ import Foundation
             if let categories = try await api.fetchCategories() {
                 self.categories = categories
             }
+            
+            foods = Food.MockPopularFoods
             
         } catch let error {
             print(error)

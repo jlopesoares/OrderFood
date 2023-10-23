@@ -20,10 +20,8 @@ struct HomeView: View {
                     LazyVStack(alignment: .leading) {
                         HomeHeaderView()
                         HomeSearchView()
-                        HomeCategoriesView(categories: viewModel.categories,
-                                           selectedCategory: $viewModel.selectedCategory)
-                        HomePopularView(selectedCategory: $viewModel.selectedCategory,
-                                        items: viewModel.foods)
+                        HomeCategoriesView(categories: viewModel.categories)
+                        HomePopularView(items: viewModel.foods)
                     }
                     .padding(.vertical, 100)
                 }
