@@ -9,7 +9,8 @@ import SwiftUI
 
 struct HomeView: View {
     
-    @StateObject var viewModel = HomeViewModel(api: CategoriesAPI())
+    @StateObject var viewModel = HomeViewModel(api: CategoriesAPI(),
+                                               foodAPI: FoodAPI())
     
     var body: some View {
         NavigationStack {
@@ -37,6 +38,7 @@ struct HomeView: View {
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
         let mockedViewModel = HomeViewModel(api: MockCategoriesAPI(),
+                                            foodAPI: MockFoodAPI(),
                                             categories: Category.mockedCategories)
         
         HomeView(viewModel: mockedViewModel)

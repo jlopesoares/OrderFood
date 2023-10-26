@@ -16,7 +16,7 @@ final class FoodAPI: FoodAPIUseCase {
     
     func fetchPopular() async throws -> [Food]? {
         
-        let path = "/1dcd902bc67069ab70b8"
+        let path = "/7187fb553303b6aaf505"
         let url = NetworkAPI.urlBuilder(for: path)
         
         do {

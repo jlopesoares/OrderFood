@@ -10,12 +10,14 @@ import Foundation
 @MainActor final class HomeViewModel: ObservableObject {
     
     let api: CategoriesAPIUseCase
+    let foodAPI: FoodAPIUseCase
     
     @Published var categories: [Category] = []
     @Published var foods: [Food] = []
     
-    init(api: CategoriesAPIUseCase, categories: [Category] = [], foods: [Food] = []) {
+    init(api: CategoriesAPIUseCase, foodAPI: FoodAPIUseCase, categories: [Category] = [], foods: [Food] = []) {
         self.api = api
+        self.foodAPI = foodAPI
         self.foods = foods
     }
     

@@ -28,7 +28,7 @@ struct HomePopularView: View {
             }
         }
         .navigationDestination(for: Food.self) { food in
-            FoodDetailView()
+            FoodDetailView(food: food)
         }
     }
 }

@@ -21,9 +21,21 @@ struct Food: FoodUseCase, Hashable, Codable {
     static func == (lhs: Food, rhs: Food) -> Bool {
         lhs.id == rhs.id
     }
+    
+    var isPizza: Bool {
+        type == .pizza
+    }
 }
 
 extension Food {
+    
+    static var samplePizza: Food {
+        Food(id: 1,
+             name: "Margarita",
+             type: .pizza,
+             image: "pizza",
+             price: Price(currentPrice: 20))
+    }
     
     static var MockPopularFoods: [Food] {
         return [Food(id: 1,

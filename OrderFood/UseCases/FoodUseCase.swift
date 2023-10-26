@@ -7,11 +7,28 @@
 
 import Foundation
 
+enum PizzaSizes: CaseIterable {
+    case small,
+    medium,
+    big
+    
+    var description: String {
+        switch self {
+        case .small:
+            return "S"
+        case .medium:
+            return "M"
+        case .big:
+            return "B"
+        }
+    }
+}
+
 enum FoodType: Int, Codable {
     case burger,
-    pizza,
-    deserts,
-    drinks
+         pizza,
+         deserts,
+         drinks
 }
 
 protocol FoodUseCase: Identifiable {
